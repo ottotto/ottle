@@ -1,2 +1,39 @@
 <h1>Welcome to Ottle!</h1>
 <h2>Ottle is about an online blogging</h2>
+
+  <head>
+    
+
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#vmap').vectorMap({
+		    map: 'world_en',
+		    backgroundColor: '#333333',
+		    color: '#ffffff',
+		    hoverOpacity: 0.7,
+		    selectedColor: '#666666',
+		    enableZoom: true,
+		    showTooltip: true,
+		    values: sample_data,
+		    scaleColors: ['#C8EEFF', '#006491'],
+		    normalizeFunction: 'polynomial'
+		});
+	});
+	</script>
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#vmapus').vectorMap({
+		    map: 'usa_en',
+		    enableZoom: true,
+		    showTooltip: true,
+		    selectedRegion: 'CA'
+		});
+	});
+	</script>
+  </head>
+  <body>
+    <div id="vmap" style="width: 600px; height: 400px;"></div>
+    <div id="vmapus" style="width: 600px; height: 400px;"></div>
+    
+  </body>
+</body>
