@@ -1,3 +1,4 @@
+source 'https://code.stripe.com'
 source 'https://rubygems.org'
 ruby "2.0.0"
 
@@ -18,6 +19,7 @@ gem 'devise'
 gem 'jqvmap-rails'
 gem "chartkick"
 gem 'groupdate'
+gem 'stripe', :source => 'https://code.stripe.com/'
 
 group :production do
 	gem 'pg'
