@@ -1,0 +1,25 @@
+<%= form_for(@post, :html => { :multipart => true }) do |f| %>
+   <div class="form-group">
+     <%= f.label :title %><br>
+     <%= f.text_field :title, class: "form-control" %>
+     <%= f.label :description %><br>
+     <%= f.text_area :description, :size => "30x10", class: "form-control"%>
+   </div>
+
+  <%= f.fields_for :post_attachments do |p| %>
+     <div class="form-group">
+       <%= p.label "Upload Multiple Images" %><br>
+       <%= p.file_field :avatar, :multiple => true, name: "post_attachments[avatar][]", class: "form-control" %>
+     </div>
+   <% end %> 
+
+   <% if params[:controller] == "post" && params[:action] == "edit" %> 
+     <% @post.post_attachments.each do |p| %>
+       <%= image_tag p.avatar, :size => "150x150", class: "form-control" %>
+     <% end %>
+   <% end %>
+
+   <div class="form-group">
+     <%= f.submit class: "btn btn-primary"%>
+   </div>
+<% end %>

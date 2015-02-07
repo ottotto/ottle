@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ottle</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://js.stripe.com/v2/" %>
-  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= csrf_meta_tags %>
-  <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
-</head>
-<body>
-<%= render 'layouts/header' %>
+	<head>
+	  <title>Ottle</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
-<div class="container">
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+	  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+	  <%= javascript_include_tag "vendor/modernizr" %>
 
-	<!-- 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p> 
-	-->
-	
-	<% flash.each do |name, msg| %>
-		<% if msg.is_a?(String) %>
-			<div class="alert alert-<%= name.to_s == 'notice' ? "success" : "danger" %> alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<%= content_tag :div, msg, :id => "flash_#{name}" %>
-			</div>
-		<% end %>
-	<% end %>
+	  <%= csrf_meta_tags %>
+	  <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
+
+	</head>
+	<body>
+	<%= render 'layouts/header' %>
+
+		<div class="container-fluid">
+
+			<!-- 
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p> 
+			-->
+			
+			<% flash.each do |name, msg| %>
+				<% if msg.is_a?(String) %>
+					<div class="alert alert-<%= name.to_s == 'notice' ? "success" : "danger" %> alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<%= content_tag :div, msg, :id => "flash_#{name}" %>
+					</div>
+				<% end %>
+			<% end %>
 
 
-	<%= yield %>
+			<%= yield %>
 
-<%= render 'layouts/footer' %>
-</div>
+			<%= render 'layouts/footer' %>
+		</div>
 
 
-</body>
+	</body>
 </html>

@@ -1,7 +1,9 @@
 @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "font-awesome";
 
 body {
-	background-color: #F5F5F1;
+	background-color: #FFFFFF;
 	color: #333333;
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,6 +25,11 @@ body {
 	font-weight: bold;
 	color: #019285;
 }
+
+.navbar-wrapper {
+	padding: 2px;
+}
+
 
 .center {
 	text-align: center;
@@ -53,5 +60,50 @@ body {
 	background-image: url('https://dl.dropboxusercontent.com/s/pzvul77knqinf84/jumbotron1.jpg?dl=0');
 	h1, h2 {
 		font-family: guardian-egyptt, georgia, serif;
-	}
+	};
+	padding: 2px;
+}
+
+html, body {
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+.c-arrow{
+	
+
+}
+.carousel, .item, .active {
+	width: 100%;
+
+}
+.carousel-inner {
+	height:500px;
+}
+
+.carousel {
+	margin-bottom: 0px;
+}
+.carousel-caption {
+	z-index: 10;
+}
+.carousel .item {
+	background-color: #777;
+}
+.carousel .carousel-inner .bg {
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.carousel .carousel-inner .bg1 {
+	background-image:url(bg1.jpg);
+	background-position: center top;
+}
+.carousel .carousel-inner .bg2 {
+	background-image:url(bg2.jpg);
+	background-position: center center;
+}
+.carousel .carousel-inner .bg3 {
+	background-image:url(bg3.jpg);
+	background-position: center bottom;
 }

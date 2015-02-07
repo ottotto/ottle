@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
   
+  resources :post_attachments
+
+  resources :posts
+
   devise_for :users
   resources :listings do
     resources :orders, only: [:new, :create]
   end
 
+  get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
+  
   get 'seller' => 'listings#seller'
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
 
-  root 'listings#index'
+  root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
