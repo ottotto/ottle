@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 # bundle exec rake doc:rails generates the API under doc/api.
