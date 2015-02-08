@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def contact
   end
+  def investment
+  end
+  def csprojects
+  end
 end

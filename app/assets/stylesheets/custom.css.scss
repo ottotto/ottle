@@ -76,10 +76,12 @@ html, body {
 }
 .carousel, .item, .active {
 	width: 100%;
+	height: 400px;
 
 }
 .carousel-inner {
-	height:500px;
+	width:100%;
+	height: 400px;
 }
 
 .carousel {
@@ -89,7 +91,7 @@ html, body {
 	z-index: 10;
 }
 .carousel .item {
-	background-color: #777;
+	background-color: #FFFFFF;
 }
 .carousel .carousel-inner .bg {
 	background-repeat:no-repeat;

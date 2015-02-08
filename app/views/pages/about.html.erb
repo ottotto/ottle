@@ -1,9 +1,6 @@
-<h1>Welcome to Ottle!</h1>
-<h2>Ottle is about an online blogging</h2>
+<h2>Welcome to Ottle! <br>A beginner's attempt to connect the dots in life</h2>
 
   <head>
-    
-
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#vmap').vectorMap({
@@ -32,8 +29,9 @@
 	</script>
   </head>
   <body>
+  	<br>
+  	<p>As a recent chemical engineer and a Berkeley graduate, I believe to live is to give, and to give is to learn. That is why I have created this personal web page about all my travels and endeavors in fields that I am interested in. (this includes food of course!)</p>
+  	<br>
     <div id="vmap" style="width: 600px; height: 400px;"></div>
     <div id="vmapus" style="width: 600px; height: 400px;"></div>
-	<div id="chart-1" style="width: 600px;height: 400px;">	<%= geo_chart({"United States" => 10, "Germany" => 1, "China" => 10, "Japan" => 30, "Mexico" => 1,"United Kingdom" =>2, "France" => 1, "Bahamas" => 1}) %></div>
-
   </body>

@@ -20,6 +20,7 @@ gem 'carrierwave'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "paperclip", "~> 4.2"
 gem "paperclip-dropbox", ">= 1.1.7"
+gem 'acts-as-taggable-on'
 gem "figaro"
 gem 'devise'
 gem 'jqvmap-rails'

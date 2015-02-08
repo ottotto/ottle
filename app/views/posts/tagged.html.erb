@@ -1,0 +1,22 @@
+  <head>
+    <div class="row">
+      <div colspan="3"></div>
+    </div>
+  </head>
+
+  <body>
+
+    <h3>Posts with the same tag</h3>
+    <% @posts.each do |post| %>
+      <div class="thumbnail">
+        <h2><%= link_to post.title, post %></h2>
+        <p>
+          <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-edit" %>
+          <%= link_to '', post_attachments_path(post), class: "glyphicon glyphicon-list-alt"%>
+        </p>
+
+      </div>
+    <% end %>
+  </body>
+
+<br>

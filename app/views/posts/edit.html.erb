@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to '', posts_path, class: "glyphicon glyphicon-arrow-left" %> |
+<%= link_to '', edit_post_path(@post), class: "glyphicon glyphicon-edit" %> |
+<%= link_to '', post_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %>
