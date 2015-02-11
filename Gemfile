@@ -4,8 +4,7 @@ ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
-gem 'less-rails'
-gem 'therubyracer'
+gem 'cloudinary'
 gem "twitter-bootstrap-rails"
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -16,7 +15,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
+gem 'owlcarousel-rails'
 gem 'carrierwave'
+gem 'carrierwave-dropbox'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "paperclip", "~> 4.2"
 gem "paperclip-dropbox", ">= 1.1.7"

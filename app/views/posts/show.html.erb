@@ -1,32 +1,39 @@
-<h3>
-  <strong><%= @post.title %></strong>
-</h3>
-<div class="col-md-12">
-
-	<% @post_attachments.each do |p| %>
-	  <div class="col-md-4">
-		  <%= link_to image_tag(p.avatar_url, height: "200"), edit_post_attachment_path(p)%>&nbsp
-	  </div>
-	<% end %>
-	<div class="col-md-6">
-		<%= @post.description %>
-	</div>
-	<div class="col-md-12">&nbsp
-		<div class ="col-md-12">Tags: 
-		    <% @post.tags.any? %>
-		    	<% @post.tags.each do |tag| %>
-		        	<%= link_to tag.name, tagged_url(:tag => tag.name), class: "btn btn-default btn-xs" %>
-		        <% end %>
+<div class="container">
+		<div class="row">
+		<h3>
+		  <strong><%= @post.title %></strong>
+		</h3>
+		<div class="col-md-12">
+			<%= image_tag @post.image.url, class: "img-rounded img-thumbnail" %>&nbsp
 		</div>
-	</div>
-	<p>&nbsp</p>
-
-	<div class="col-md-12">
+		<div class="col-md-12">
+			<% @post_attachments.each do |p| %>
+			  <div class="col-md-4">
+				  <%= link_to image_tag(p.avatar_url(:display)), edit_post_attachment_path(p)%>&nbsp
+			  </div>
+			<% end %>
+		</div>
+		<div class="col-md-12">
+			<div class="">
+				<%=simple_format h @post.description %>
+			</div>
+			<div class="col-md-12">&nbsp
+				<div class ="col-md-12">Tags: 
+				    <% @post.tags.any? %>
+				    	<% @post.tags.each do |tag| %>
+				        	<%= link_to tag.name, tagged_url(:tag => tag.name), class: "btn btn-default btn-xs" %>
+				        <% end %>
+				</div>
+			</div>
+		&nbsp&nbsp
+		</div>
+		<div class="col-md-12">
 		<br>
 			<%= link_to '', posts_path, class: "glyphicon glyphicon-arrow-left" %> |
-		<% if user_signed_in? %>
-			<%= link_to '', edit_post_path(@post), class: "glyphicon glyphicon-edit" %> |
-		    <%= link_to '', post_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %>
-		<% end %>
+			<% if user_signed_in? %>
+				<%= link_to '', edit_post_path(@post), class: "glyphicon glyphicon-edit" %> |
+				<%= link_to '', post_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %>
+			<% end %>
+		</div>
 	</div>
 </div>

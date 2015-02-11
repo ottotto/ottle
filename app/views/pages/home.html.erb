@@ -1,48 +1,33 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+   
+    $("#owl-demo").owlCarousel({
+      autoPlay : 3000,
+      stopOnHover : true,
+      navigation : true,
+      lazyLoad : true,
+      singleItem: true,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      transitionStyle : "fade",
+      itemsDesktop : [1119, 3],
+      itemsDesktopSmall : [979, 3]
+    });
+   
+  });
+</script>
 
-   <div id="myCarousel" class="carousel slide container" data-ride="carousel" style="width: 100%">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="https://unsplash.com/photos/v99lFTVp_ws/download" alt="First slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Welcome to Otto's Personal Website</h1>
-              <p><a class="btn btn-md btn-info" href="/posts" role="button">Check it out!</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="https://unsplash.com/photos/Hun_NmE5CIs/download" alt="Second slide">
-            <div class="carousel-caption">
-              <h1>Travel, Investments, CS Projects</h1>
-            </div>
-        </div>
-        <div class="item">
-          <img src="https://unsplash.com/photos/jGKBncKGbrc/download" alt="Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Always learning</h1>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left c-arrow" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right c-arrow" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div><!-- /.carousel -->
 
+<div id="owl-demo" class="owl-carousel">
+          
+  <div class="item"><img src="https://unsplash.com/photos/v99lFTVp_ws/download" alt="First slide" width="100%"></div>
+  <div class="item"><img src="https://unsplash.com/photos/jGKBncKGbrc/download" alt="Third slide" width="100%"></div>
+  <div class="item"><img src="https://ununsplash.imgix.net/photo-1415302199888-384f752645d0?q=75&fm=jpg&s=823bdcc1b7ad955f5180efd352561016" alt="Third slide" width="100%"></div>
+  <div class="item"><img src="https://ununsplash.imgix.net/uploads/141223808515744db9995/3361b5e1?q=75&fm=jpg&s=04607c34357b70db74394f2fd8a6db7f" alt="Third slide" width="100%"></div>
+  <div class="item"><img src="https://unsplash.imgix.net/photo-1414589491349-2acf6131176e?q=75&fm=jpg&s=0fc2f75bf5f668bf513d88a721dbe5c9" alt="Third slide" width="100%"></div>
+
+</div>
       <!-- START THE FEATURETTES -->
 <div class="container">
       <hr class="featurette-divider">

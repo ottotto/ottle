@@ -26,33 +26,37 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-     @post = Post.new(post_params)
-
-     respond_to do |format|
-       if @post.save
-         params[:post_attachments]['avatar'].each do |a|
-            @post_attachment = @post.post_attachments.create!(:avatar => a, :post_id => @post.id)
-         end
-         format.html { redirect_to @post, notice: 'Post was successfully created.' }
-       else
-         format.html { render action: 'new' }
-       end
-     end
-   end
+    @post = Post.new(post_params)
+    if @post.save
+      if params[:post_attachments]
+        params[:post_attachments]['avatar'].each {|avatar|
+          @post.post_attachments.create!(:avatar => avatar, :post_id => @post.id)
+        }
+      end
+      flash[:notice] = "Your post has been created."
+      redirect_to @post
+    else
+      flase[:alert] = "Something went wrong."
+      render :new
+    end
+  end
+  def update
+    if @post.update(post_params)
+      if params[:post_attachments]
+        params[:post_attachments]['avatar'].each {|avatar|
+          @post.post_attachments.create!(:avatar => avatar, :post_id => @post.id)
+        }
+      end
+      flash[:notice] = "Your post has been created."
+      redirect_to @post
+    else
+      flase[:alert] = "Something went wrong."
+      render :edit
+    end
+  end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
-  def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def tagged
     if params[:tag].present?
@@ -79,6 +83,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :tag_list)
+      params.require(:post).permit(:title, :description, :tag_list, :image, post_attachments_attributes: [:id, :post_id, :avatar])
     end
 end

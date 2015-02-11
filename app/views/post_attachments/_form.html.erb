@@ -1,5 +1,7 @@
 <%= form_for(@post_attachment) do |f| %>
-  <%= image_tag @post_attachment.avatar, style: "width: 30%"%>
+  <% unless @post_attachment.avatar_url.nil? %>
+    <%= image_tag @post_attachment.avatar_url %><br />
+  <% end %>
   <div class="form-group">
     <%= f.label :post_id %><br>
     <%= f.number_field :post_id, class: "form-control" %>
