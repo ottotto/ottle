@@ -108,30 +108,3 @@ html, body {
 	background-position: center bottom;
 }
 
-#slides {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%; 
-    width: 100%;
-    z-index: 0;
-}
-
-
-#slides .owl-item .item{
-    text-align: center;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-#slides .owl-item .item img{
-   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-   filter: alpha(opacity=0);
-   opacity: 0;
-}
