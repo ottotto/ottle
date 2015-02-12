@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       if params[:post_attachments]
         params[:post_attachments]['avatar'].each {|avatar|

@@ -1,5 +1,4 @@
 class Post < ActiveRecord::Base
-
 	if Rails.env.development? 
 		has_attached_file :image, :styles => { :medium => "500x>", :thumb => "100x100>" }, :default_url => "default.jpg"
 	else
@@ -9,7 +8,7 @@ class Post < ActiveRecord::Base
 	    	:path => ":style/:id_:filename"
 	end
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  	#validates_attachment_presence :image
+  	validates_attachment_presence :image
   	#validates :title, :description, presence: true
 
 	acts_as_taggable
