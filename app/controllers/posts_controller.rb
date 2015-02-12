@@ -28,31 +28,36 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      if params[:post_attachments]
-        params[:post_attachments]['avatar'].each {|avatar|
-          @post.post_attachments.create!(:avatar => avatar, :post_id => @post.id)
-        }
+
+    respond_to do |format|
+      if @post.save
+        if params[:post_attachments]
+          params[:post_attachments]['avatar'].each {|avatar|
+            @post.post_attachments.create!(:avatar => avatar, :post_id => @post.id)
+          }
+        end
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
-      flash[:notice] = "Your post has been created."
-      redirect_to @post
-    else
-      flash[:alert] = "Something went wrong."
-      render :new
     end
   end
   def update
-    if @post.update(post_params)
-      if params[:post_attachments]
-        params[:post_attachments]['avatar'].each {|avatar|
-          @post.post_attachments.create!(:avatar => avatar, :post_id => @post.id)
-        }
+    respond_to do |format|
+      if @post.update(post_params)
+        if params[:post_attachments]
+          params[:post_attachments]['avatar'].each {|avatar|
+            @post.post_attachments.create!(:avatar => avatar, :post_id => @post.id)
+          }
+        end
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
-      flash[:notice] = "Your post has been created."
-      redirect_to @post
-    else
-      flash[:alert] = "Something went wrong."
-      render :edit
     end
   end
 
