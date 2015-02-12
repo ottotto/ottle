@@ -8,6 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
 
+  process :convert => 'png'
   
   version :display do
     process :eager => true
