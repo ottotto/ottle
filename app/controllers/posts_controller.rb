@@ -35,9 +35,9 @@ class PostsController < ApplicationController
           params[:post_attachments]['avatar'].each do |a|
             @post.post_attachments.create!(:avatar => a, :post_id => @post.id)
           end
-          format.html { redirect_to @post, notice: 'Post was successfully created.' }
-          format.json { render :show, status: :created, location: @post }
         end
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
