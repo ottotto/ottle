@@ -11,15 +11,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  version :display do
-    process :eager => true
-    process :resize_to_fill => [300, 200, :north]
-  end
-
-  version :thumbnail do
-    process :eager => true
-    process :resize_to_fit => [50, 50]
-  end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
