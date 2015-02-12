@@ -37,7 +37,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Your post has been created."
       redirect_to @post
     else
-      flase[:alert] = "Something went wrong."
+      flash[:alert] = "Something went wrong."
       render :new
     end
   end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Your post has been created."
       redirect_to @post
     else
-      flase[:alert] = "Something went wrong."
+      flash[:alert] = "Something went wrong."
       render :edit
     end
   end
