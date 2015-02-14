@@ -11,15 +11,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
-#gem 'turbolinks'
+gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'owlcarousel-rails'
-#gem 'carrierwave'
-#gem 'carrierwave-dropbox'
+gem 'carrierwave'
+gem 'carrierwave-dropbox'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "paperclip", "~> 4.2"
 gem "paperclip-dropbox", ">= 1.1.7"

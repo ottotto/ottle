@@ -52,7 +52,7 @@
       <% @posts.each do |post| %>
         <div class="col-md-12 thumbnail">
           <div class="col-md-3">
-          <%= link_to image_tag(post.image.url, width: "100%"), post , class: "img-thumbnail thumbnail"%>
+          <%= link_to image_tag(post.image.url, width: "100%", ), post , class: "img-thumbnail thumbnail"%>
         </div>
         <div class="col-md-9">
           <h3><%= link_to post.title, post %></h3>
