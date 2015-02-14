@@ -40,14 +40,6 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     builder (3.2.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
-    carrierwave-dropbox (1.2.1)
-      carrierwave (~> 0.9)
-      dropbox-sdk (~> 1.6)
     chartkick (1.3.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -228,9 +220,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  bootstrap-sass (~> 3.3.1)
-  carrierwave
-  carrierwave-dropbox
+  bootstrap-sass (~> 3.3.3)
   chartkick
   cloudinary
   coffee-rails (~> 4.0.0)
@@ -259,6 +249,5 @@ DEPENDENCIES
   spring
   sqlite3
   stripe!
-  turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
