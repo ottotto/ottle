@@ -28,21 +28,23 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
-    respond_to do |format|
-      if @post.save
-        if params[:post_attachments]
-          params[:post_attachments]['avatar'].each do |a|
-            @post.post_attachments.create!(:avatar => a, :post_id => @post.id)
+    @tags = Post.tag_counts_on(:tags)
+    
+        respond_to do |format|
+          if @post.save
+            if params[:post_attachments]
+              params[:post_attachments]['avatar'].each do |a|
+                @post.post_attachments.create!(:avatar => a, :post_id => @post.id)
+              end
+            end
+            format.html { redirect_to @post, notice: 'Post was successfully created.' }
+            format.json { render :show, status: :created, location: @post }
+          else
+            format.html { render :new }
+            format.json { render json: @post.errors, status: :unprocessable_entity }
           end
         end
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
   def update
     respond_to do |format|
@@ -70,6 +72,9 @@ class PostsController < ApplicationController
     else
       @posts = Post.index
     end
+  end
+  def tag_cloud
+    @tags = Post.tag_counts_on(:tags)
   end
   # DELETE /posts/1
   # DELETE /posts/1.json

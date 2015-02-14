@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 	if Rails.env.development? 
 		has_attached_file :image, :styles => { :medium => "500x>", :thumb => "100x100>" }, :default_url => "default.jpg",
 			dependent: :destroy
+
 	else
 		has_attached_file :image, :styles => { :medium => "500x>", :thumb => "100x100>" }, :default_url => "default.jpg",
 		    :storage => :dropbox,
@@ -12,6 +13,7 @@ class Post < ActiveRecord::Base
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   	validates_attachment_presence :image
   	#validates :title, :description, presence: true
+  	
 
 	acts_as_taggable
 	acts_as_taggable_on :tag_list
@@ -22,8 +24,8 @@ class Post < ActiveRecord::Base
 	validate :image_size_validation, :if => "image?"
 
 	def image_size_validation
-	    if image.size > 1.megabytes
-	      errors.add(:base, "Image should be less than 1MB")
+	    if image.size > 2.megabytes
+	      errors.add(:base, "Image should be less than 2MB")
 	    end
 	end
 

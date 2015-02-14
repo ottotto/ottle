@@ -1,6 +1,6 @@
 <%= form_for(@post_attachment) do |f| %>
   <% unless @post_attachment.avatar_url.nil? %>
-    <%= image_tag @post_attachment.avatar_url %><br />
+    <%= image_tag @post_attachment.avatar_url, width: "50%" %><br />
   <% end %>
   <div class="form-group">
     <%= f.label :post_id %><br>

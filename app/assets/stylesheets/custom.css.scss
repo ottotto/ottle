@@ -14,8 +14,8 @@ body {
 
 .navbar-default .navbar-brand {
 	font-family: guardian-egypt, georgia, serif;
-	font-weight: 400;
-	color: #d5641c;
+	font-weight: 500;
+	color: #D5641C;
 	font-size: 30px;
 }
 
@@ -28,6 +28,7 @@ body {
 
 .navbar-wrapper {
 	padding: 2px;
+	margin: -2px;
 }
 
 
@@ -64,47 +65,6 @@ body {
 	padding: 2px;
 }
 
-html, body {
-	height:100%;
-	margin:0;
-	padding:0;
-}
-
 .white {
   color: #fff;
 }
-
-.carousel, .item, .active {
-	height: 30%;
-
-}
-.carousel-inner {
-	height: 30%;
-}
-
-.carousel {
-	margin-bottom: 0px;
-}
-.carousel-caption {
-	z-index: 10;
-}
-.carousel .item {
-	background-color: #FFFFFF;
-}
-.carousel .carousel-inner .bg {
-	background-repeat:no-repeat;
-	background-size:cover;
-}
-.carousel .carousel-inner .bg1 {
-	background-image:url(bg1.jpg);
-	background-position: center top;
-}
-.carousel .carousel-inner .bg2 {
-	background-image:url(bg2.jpg);
-	background-position: center center;
-}
-.carousel .carousel-inner .bg3 {
-	background-image:url(bg3.jpg);
-	background-position: center bottom;
-}
-

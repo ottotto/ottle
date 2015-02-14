@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-fileupload-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -25,6 +26,10 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem 'acts-as-taggable-on'
 gem "figaro"
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 gem 'jqvmap-rails'
 gem "chartkick"
 gem 'groupdate'

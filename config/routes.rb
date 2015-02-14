@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :post_attachments
+  #get 'tag/show'
 
+  resources :post_attachments
   resources :posts
+  resources :tag
 
   devise_for :users
   resources :listings do

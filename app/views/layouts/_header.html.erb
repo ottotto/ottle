@@ -1,13 +1,13 @@
-<div class="navbar-wrapper transparent navbar-inverse">
+<div class="navbar-wrapper navbar-default">
    <nav class="navbar-inner">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
           <!-- <span class="icon-bar"></span> -->
-          <span class="glyphicon glyphicon-th-list white" style="font-size: 15px"></span>
+          <span class="glyphicon glyphicon-th-list" style="font-size: 15px"></span>
         </button>
-        <a class="navbar-brand" href="/">Ottle</a>
+        <a class="navbarbrand navbar-brand" href="/">Ottle</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +27,11 @@
 
 
         <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Listings", listings_path %></li>
+              <li>
+                <a href="/listings">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Listing
+                </a>
+              </li>
               <% if user_signed_in? %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Seller Account<span class="caret"></span></a>
@@ -38,7 +42,7 @@
                 </li>
 
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%= current_user.name %><span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><%= link_to "Purchase History", purchases_path %></li>
                     <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
@@ -48,8 +52,8 @@
                 </li>
      
               <% else %>
-                <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default" %></li>
+                <li><%= link_to "Sign In", new_user_session_path, class: "btn btn-default" %></li>
               <% end %>
 
           </li>

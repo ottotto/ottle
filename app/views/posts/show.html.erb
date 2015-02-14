@@ -6,28 +6,45 @@
 		<div class="col-md-12">
 			<%= image_tag @post.image.url, class: "img-rounded img-thumbnail" %>&nbsp
 		</div>
+
 		<div class="col-md-12">
 			<% @post_attachments.each do |p| %>
-			  <div class="col-md-4">
-				  <%= link_to image_tag(p.avatar_url, :style => "width:100px"), edit_post_attachment_path(p)%>&nbsp
+			  <div class="col-md-4 col-sm-3">
+				  <%= link_to image_tag(p.avatar_url, :style => "height:150px; max-width:400px"), edit_post_attachment_path(p)%>&nbsp
 			  </div>
 			<% end %>
 		</div>
-		<div class="col-md-12">
+
+		<div class="col-md-12 col-sm-12">
 			<div class="">
 				<%=simple_format h @post.description %>
 			</div>
-			<div class="col-md-12">&nbsp
-				<div class ="col-md-12">Tags: 
+			<div class="col-md-12 col-sm-12">&nbsp
+				<div class ="col-md-12 col-sm-12">Tags: 
 				    <% @post.tags.any? %>
 				    	<% @post.tags.each do |tag| %>
 				        	<%= link_to tag.name, tagged_url(:tag => tag.name), class: "btn btn-default btn-xs" %>
 				        <% end %>
 				</div>
 			</div>
+			&nbsp
+			 <div id="disqus_thread"></div>
+			    <script type="text/javascript">
+			        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			        var disqus_shortname = 'ottle'; // required: replace example with your forum shortname
+
+			        /* * * DON'T EDIT BELOW THIS LINE * * */
+			        (function() {
+			            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			        })();
+			    </script>
+			    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
 		&nbsp&nbsp
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12 col-sm-12">
 		<br>
 			<%= link_to '', posts_path, class: "glyphicon glyphicon-arrow-left" %> |
 			<% if user_signed_in? %>
@@ -37,3 +54,4 @@
 		</div>
 	</div>
 </div>
+

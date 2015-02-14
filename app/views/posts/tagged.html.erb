@@ -1,22 +1,67 @@
 <div class="container">  
   <head>
-    <div class="row">
-      <div colspan="3"></div>
-    </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('#vmapus').vectorMap(
+      {
+          map: 'usa_en',
+          backgroundColor: '#a5bfdd',
+          borderColor: '#818181',
+          borderOpacity: 0.25,
+          borderWidth: 1,
+          color: '#f4f3f0',
+          enableZoom: false,
+          hoverColor: '#c9dfaf',
+          hoverOpacity: null,
+          normalizeFunction: 'linear',
+          scaleColors: ['#b6d6ff', '#005ace'],
+          selectedColor: '#c9dfaf',
+          selectedRegion: null,
+          showTooltip: true,
+          onRegionClick: function (event, code, region) {
+              switch (code) {
+              case "ca":
+                  window.location.replace("/tagged?tag=California");
+                  break;
+              case "hi":
+                  window.location.replace("/tagged?tag=Hawaii");
+                  break;
+              case "fl":
+                  window.location.replace("/tagged?tag=Florida");
+                  break;
+                  }
+              },
+          onRegionOver: function (event, code, region) {
+             document.body.style.cursor = "pointer";
+              },
+          onRegionOut: function (element, code, region) {
+                 document.body.style.cursor = "default";
+              }
+      });
+    });
+    </script>
   </head>
 
   <body>
-
-    <h3>Posts with the same tag</h3>
+    
+    <h3>Tagged</h3>
+    <div id="vmapus" style="width: 100%; height: 300px;"></div>
     <% @posts.each do |post| %>
       <div class="thumbnail">
         <h2><%= link_to post.title, post %></h2>
+        <% post.tags.any? %>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag.name, tagged_url(:tag => tag.name), class: "btn btn-default btn-xs" %>
+        <% end %><br><br>
         <p>
           <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-edit" %>
-          <%= link_to '', post_attachments_path(post), class: "glyphicon glyphicon-list-alt"%>
         </p>
 
       </div>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to '', new_post_path, class: "glyphicon glyphicon-plus-sign"%>
+      <%= link_to '', post_attachments_path, class: "glyphicon glyphicon-list-alt"%>
     <% end %>
   </body>
 
