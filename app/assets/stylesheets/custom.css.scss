@@ -2,7 +2,6 @@
 @import "bootstrap";
 @import "bootstrap/glyphicons";
 @import "font-awesome";
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
 
 body {
@@ -12,7 +11,7 @@ body {
 }
 
 .navbar-default {
-	background-color: #EFEFEB;
+	background-color: #FFFFFF; opacity: 0.85; filter: alpha(opacity=50);
 }
 
 .navbar-default .navbar-brand {
