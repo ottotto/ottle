@@ -7,7 +7,9 @@
 		<div class="col-md-12">
 			<%= image_tag @post.image.url, class: "img-rounded img-thumbnail" %>&nbsp
 		</div>
-
+		<div class="col-md-12">
+			<%= @post.address %>&nbsp
+		</div>
 		<div class="col-md-12">
 			<% @post_attachments.each do |p| %>
 			  <div class="col-md-4 col-sm-3">
