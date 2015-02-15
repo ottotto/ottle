@@ -31,6 +31,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'jqvmap-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
 gem "chartkick"
 gem 'groupdate'
 gem 'stripe', :source => 'https://code.stripe.com/'

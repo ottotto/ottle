@@ -6,6 +6,11 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @hash = Gmaps4rails.build_markers(Post.all) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+      marker.infowindow post.title
+    end
   end
 
   # GET /posts/1
@@ -94,6 +99,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :tag_list, :image, post_attachments_attributes: [:id, :post_id, :avatar])
+      params.require(:post).permit(:title, :description, :tag_list, :image, :address, :latitude, :longitude, post_attachments_attributes: [:id, :post_id, :avatar])
     end
 end

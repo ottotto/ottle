@@ -1,7 +1,7 @@
+
+
 <div class="container">
-  <h1>World Food and Travel Blog</h1>
-
-
+  <h1>World Travel Blog</h1>
     <head>
     <script type="text/javascript">
       jQuery(document).ready(function() {
@@ -45,9 +45,24 @@
     </head>
 
     <body>
-      <div id="vmap" style="width: 100%; height: 350px;" data-no-turbolink= "true" class="col-md-12"></div>
 
-      <h3>Atlas Journey</h3>
+    <% content_for :javascripts do %>
+      <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: 'gmap'}}, function(){
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+      </script>
+    <% end %>
+    <div>
+      <div id="gmap" style='width: 100%; height: 400px;'></div>
+      <div id="sidebar_container"></div>
+    </div>
+
+      <h3>Footprints</h3>
 
       <% @posts.each do |post| %>
         <div class="col-md-12 thumbnail">
@@ -69,6 +84,7 @@
         </div>
 
       <% end %>
+
     </body>
 
   <br>
@@ -77,4 +93,10 @@
     <%= link_to '', new_post_path, class: "glyphicon glyphicon-plus-sign"%>
     <%= link_to '', post_attachments_path, class: "glyphicon glyphicon-list-alt"%>
   <% end %>
+  <hr class="featurette-divider">
+  <div>
+    <h4>Tagged Locations</h4>
+    <div id="vmap" style="width: 100%; height: 300px;" class="col-md-12"></div>
+  </div>
 </div>
+
