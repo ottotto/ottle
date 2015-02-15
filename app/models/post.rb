@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
   	validates :address, :title, presence: true
 
   	geocoded_by :address
-  	after_validation :geocode, if: -> (post){post.address.present? and post.address_changed?}
+  	after_validation :geocode
 
 	acts_as_taggable
 	acts_as_taggable_on :tag_list
