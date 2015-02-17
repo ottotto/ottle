@@ -35,7 +35,6 @@ body {
 	margin: -2px;
 }
 
-
 .center {
 	text-align: center;
 }
@@ -71,4 +70,26 @@ body {
 
 .white {
   color: #fff;
+}
+
+#owlshow .owl-item img{
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#owl-home .owl-item img{
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.postThumb {
+	width:200px;
 }

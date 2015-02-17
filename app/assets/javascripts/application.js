@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require owl.carousel
+//= require bootstrap-datepicker
 //= require bootstrap
 //= require underscore
 //= require gmaps/google

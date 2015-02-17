@@ -1,3 +1,11 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      format: "yyyy/mm/dd"
+    });
+  });
+</script>
+
 <%= form_for(@post, :html => { :multipart => true }) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation" class="alert alert-danger alert-dismissable">
@@ -16,8 +24,11 @@
      <%= f.label :title %><br>
      <%= f.text_field :title, class: "form-control" %>
      <%= f.label :tags, "Tags (separated by commas)" %><br>
-     <%= f.text_field :tag_list,class: "form-control"%>
-     <%= f.label :address %><br>
+     <%= f.text_field :tag_list,class: "form-control"%><br>
+     <%= f.label "From" %>&nbsp&nbsp<%= f.text_field :FromDate, class: "datepicker"%>
+     <%= f.label "To" %>&nbsp&nbsp<%= f.text_field :ToDate, class: "datepicker" %>
+     <br><br>
+     <%= f.label :address %>
      <%= f.text_field :address, class: "form-control"%>
      <%= f.label :description %><br>
      <%= f.text_area :description, :size => "30x10", class: "form-control"%>

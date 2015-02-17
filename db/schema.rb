@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215091153) do
+ActiveRecord::Schema.define(version: 20150217123116) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20150215091153) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+    t.date     "FromDate"
+    t.date     "ToDate"
   end
 
   create_table "taggings", force: true do |t|
