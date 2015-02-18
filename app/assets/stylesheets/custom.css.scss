@@ -3,6 +3,27 @@
 @import "bootstrap/glyphicons";
 @import "font-awesome";
 
+#owlshow .owl-item img{
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#owl-home .owl-item img{
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.postThumb {
+	width:200px;
+}
 
 body {
 	background-color: #FFFFFF;
@@ -72,24 +93,3 @@ body {
   color: #fff;
 }
 
-#owlshow .owl-item img{
-  display: block;
-  width: 100%;
-  height: auto;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
-#owl-home .owl-item img{
-  display: block;
-  width: 100%;
-  max-height: 300px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
-.postThumb {
-	width:200px;
-}
