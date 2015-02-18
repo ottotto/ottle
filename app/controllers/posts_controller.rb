@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if params[:posts]
+    if @posts.nil?
       @posts = Post.order("FromDate DESC").all
     else
       @posts. Post.all
