@@ -5,7 +5,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order("FromDate DESC").all
+    if @posts.any?
+      @posts = Post.order("FromDate DESC").all
+    else
+      @posts. Post.all
+    end
     @hash = Gmaps4rails.build_markers(Post.all) do |post, marker|
       marker.lat post.latitude
       marker.lng post.longitude
