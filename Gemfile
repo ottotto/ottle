@@ -29,8 +29,7 @@ gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-linkedin'
+gem "koala"
 gem 'jqvmap-rails'
 gem 'geocoder'
 gem 'gmaps4rails'

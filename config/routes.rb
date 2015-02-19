@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :post_attachments
   resources :posts
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :listings do
     resources :orders, only: [:new, :create]
   end
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
   get 'tagged' => 'posts#tagged'
+  get 'users' => 'users#index'
 
   root 'pages#home'
 

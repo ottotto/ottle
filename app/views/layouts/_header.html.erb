@@ -1,11 +1,11 @@
-<div class="navbar-wrapper navbar-default">
+<nav class="navbar navbar-wrapper navbar-inverse" role="navigation">
    <nav class="navbar-inner">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
           <!-- <span class="icon-bar"></span> -->
-          <span class="glyphicon glyphicon-th-list" style="font-size: 15px"></span>
+          <span class="glyphicon glyphicon-list white" style="font-size: 20px"></span>
         </button>
         <a class="navbarbrand navbar-brand" href="/">Ottle</a>
       </div>
@@ -29,7 +29,7 @@
         <ul class="nav navbar-nav navbar-right">
               <li>
                 <a href="/listings">
-                <span class="glyphicon glyphicon-shopping-cart"></span> Listing
+                <span class="glyphicon glyphicon-shopping-cart fa-lg"></span>
                 </a>
               </li>
               <% if user_signed_in? %>
@@ -52,12 +52,24 @@
                 </li>
      
               <% else %>
-                <li><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default" %></li>
-                <li><%= link_to "Sign In", new_user_session_path, class: "btn btn-default" %></li>
+                <li>
+                  <a href="/users/auth/facebook">
+                    <i class="fa fa-facebook-official fa-lg"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="/users/sign_in">
+                    <i class="fa fa-sign-in fa-lg"></i>
+                  </a>
+                </li>
+                <li>
+                  <%= link_to "Sign Up", new_user_registration_path %>
+                </li>
               <% end %>
+  
 
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->
   </nav>
-</div>
+</nav>

@@ -15,14 +15,24 @@
 #owl-home .owl-item img{
   display: block;
   width: 100%;
-  max-height: 300px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  max-height: 400px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.carousel {
+	margin-bottom:0;
 }
 
 .postThumb {
 	width:200px;
+}
+
+.navbar-wrapper .navbar-default {
+	background-color: #ffffff;
+	opacity: 0.85; 
+	filter: alpha(opacity=50);
 }
 
 body {
@@ -31,13 +41,11 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar-default {
-	background-color: #ffffff;
-	opacity: 0.85; 
-	filter: alpha(opacity=50);
+.navbar {
+	padding: 0;
+	margin: 0;
 }
-
-.navbar-default .navbar-brand {
+.navbar-inverse .navbar-brand {
 	font-family: guardian-egypt, georgia, serif;
 	font-weight: 500;
 	color: #D5641C;
@@ -49,11 +57,19 @@ body {
 	font-size: 14px;
 	font-weight: bold;
 	color: #019285;
+	padding: 0;
 }
 
-.navbar-wrapper {
-	padding: 2px;
-	margin: -2px;
+.navbar-inverse .navbar-nav > li > a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #D5641C;
+    color: #000000;
 }
 
 .center {
@@ -86,10 +102,17 @@ body {
 	h1, h2 {
 		font-family: guardian-egyptt, georgia, serif;
 	};
-	padding: 2px;
+	padding: 0;
+	opacity: 0.85; 
+	filter: alpha(opacity=10);
 }
 
 .white {
   color: #fff;
+}
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
 }
 
