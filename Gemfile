@@ -38,6 +38,8 @@ gem "chartkick"
 gem 'groupdate'
 gem 'stripe', :source => 'https://code.stripe.com/'
 
+gem "passenger"
+
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'	
