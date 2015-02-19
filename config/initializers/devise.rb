@@ -26,8 +26,9 @@ Devise.setup do |config|
   #For development
   #config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], :display => "popup"
   #For deployment
+  FACEBOOK_CONFIG = YAML.load_file("#{::Rails.root}/config/facebook.yml")[::Rails.env]
   #config.omniauth :facebook, FACEBOOK_CONFIG['app_id'], FACEBOOK_CONFIG['secret'], :display => "popup"
-  config.omniauth :facebook, ENV[FACEBOOK_APP_ID], ENV[FACEBOOK_APP_SECRET], :display => "popup"
+  config.omniauth :facebook, FACEBOOK_CONFIG['app_id'], FACEBOOK_CONFIG['secret'], :display => "popup"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
