@@ -23,8 +23,10 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   
   require "omniauth-facebook"
-  config.omniauth :facebook, ["FACEBOOK_APP_ID"], ["FACEBOOK_APP_SECRET"]
-
+  #For development
+  #config.omniauth :facebook, ["FACEBOOK_APP_ID"], ["FACEBOOK_APP_SECRET"]
+  #For deployment
+  config.omniauth :facebook, FACEBOOK_CONFIG['app_id'], FACEBOOK_CONFIG['secret']
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
