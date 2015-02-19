@@ -31,6 +31,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala"
 gem 'jqvmap-rails'
+gem 'jvectormap-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem "chartkick"
