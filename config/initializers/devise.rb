@@ -23,7 +23,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   
   require "omniauth-facebook"
-  config.omniauth :facebook, Figaro.env.FACEBOOK_APP_ID, Figaro.env.FACEBOOK_APP_SECRET
+  config.omniauth :facebook, ["FACEBOOK_APP_ID"], ["FACEBOOK_APP_SECRET"]
 
 
   # ==> Configuration for any authentication mechanism
