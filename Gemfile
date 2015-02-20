@@ -20,7 +20,6 @@ gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'owlcarousel-rails'
 gem 'carrierwave'
-gem 'carrierwave-dropbox'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "paperclip", "~> 4.2"
 gem "paperclip-dropbox", ">= 1.1.7"

@@ -15,18 +15,25 @@
 #owl-home .owl-item img{
   display: block;
   width: 100%;
-  max-height: 400px;
+  min-height:100px;
+  max-height: 300px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
 
+.footer {
+	background-color: #B2B2B2;
+	height: 100px;
+	opacity: 0.85; 
+	filter: alpha(opacity=50);
+}
 .carousel {
 	margin-bottom:0;
 }
 
 .postThumb {
-	width:200px;
+	width: 300px;
 }
 
 .navbar-wrapper .navbar-default {
@@ -45,6 +52,13 @@ body {
 	padding: 0;
 	margin: 0;
 }
+
+.brand {
+	color: #D5641C;
+	font-weight: 500;
+	font-size: 70px;
+}
+
 .navbar-inverse .navbar-brand {
 	font-family: guardian-egypt, georgia, serif;
 	font-weight: 500;

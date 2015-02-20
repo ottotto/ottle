@@ -64,25 +64,29 @@
       <h3>Footprints</h3>
 
       <% @posts.each do |post| %>
-        <div class="col-md-12 thumbnail">
-          <div class="col-md-3 postThumb">
-            <%= link_to image_tag(post.image.url), post , class: "img-thumbnail thumbnail"%>
-            &nbsp <%= post.FromDate.strftime("%d %b %Y") %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title"><%= link_to post.title, post %></h2>
           </div>
-          <div>
-
-          </div>
-          <div class="col-md-9">
-            <h3><%= link_to post.title, post %></h3>
-            <p>
-              <% post.tags.any? %>
-                <% post.tags.each do |tag| %>
-                  <%= link_to tag.name, tagged_url(:tag => tag.name), class: "btn btn-default btn-xs" %>
-                <% end %><br><br>
-              <% if user_signed_in? %>
-                <%= link_to 'edit', edit_post_path(post), class: "glyphicon glyphicon-edit" %>
-              <% end %>
-            </p>
+          <div class="panel-body">
+            <div class="postThumb col-md-12">
+              <%= link_to image_tag(post.image.url), post , class: "img-thumbnail thumbnail"%>
+            </div>
+            <div>
+                <p>
+                  <b>From: </b><%= post.FromDate.strftime("%d %b %Y") %><br>
+                  <b>To: </b><%= post.ToDate.strftime("%d %b %Y") %>
+                </p>
+                <p>
+                  <% post.tags.any? %>
+                    <% post.tags.each do |tag| %>
+                      <%= link_to tag.name, tagged_url(:tag => tag.name), class: "btn btn-default btn-xs" %>
+                    <% end %><br><br>
+                  <% if user_signed_in? %>
+                    <%= link_to 'edit', edit_post_path(post), class: "glyphicon glyphicon-edit" %>
+                  <% end %>
+                </p>
+            </div>
           </div>
         </div>
 

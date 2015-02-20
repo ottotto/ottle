@@ -2,25 +2,42 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
 
-  if Rails.env.development?
-    storage :file
-  else
-    storage :dropbox
-  end
+  include Cloudinary::CarrierWave
+  #if Rails.env.development?
+  #  storage :file
+  #else
+  #  storage :dropbox
+  #end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
 
+  process :convert => 'png'
+
+  version :square do
+    cloudinary_transformation :width => 200, :height => 200, :crop => :fill, :gravity => :face
+  end
+
+  version :slideshow do
+    cloudinary_transformation :width => 1170, :height => 400, :crop => :fill
+  end
+
+  version :thumb do
+    resize_to_fit 170, 120
+  end
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

@@ -24,7 +24,7 @@
 		<h3>
 		  <strong><%= @post.title %></strong>
 		</h3>
-		<div id="owlshow" class="owl-carousel">
+		<div id="owlshow" class="owl-carousel col-md-12">
 			<% @post_attachments.each do |p| %>
 				<div class="item">
 					<%= link_to image_tag(p.avatar_url), edit_post_attachment_path(p)%>
@@ -32,7 +32,6 @@
 			<% end %>
 
 		</div>
-		<br>
 		<div class="col-md-7">
 		    <% content_for :javascripts do %>
 		      <%= javascript_tag do %>
@@ -57,7 +56,7 @@
 		    </div>
 		</div>
 		<br>
-		<div class="col-md-3">
+		<div class="col-md-5">
 			<%= image_tag @post.image.url, class: "img-rounded img-thumbnail", :style => "width:100%; max-height:200px" %>&nbsp
 		</div>
 		<div class="col-md-5">
@@ -69,7 +68,7 @@
 		</div>
 
 		<div class="col-md-12 col-sm-12">
-			<div class="">
+			<div class="container-fluid"><br><br>
 				<%=simple_format h @post.description %>
 			</div>
 			<div class="col-md-12 col-sm-12">&nbsp
