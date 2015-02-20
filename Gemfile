@@ -38,6 +38,7 @@ gem 'groupdate'
 gem 'stripe', :source => 'https://code.stripe.com/'
 
 gem "passenger"
+gem 'newrelic_rpm'
 
 group :production do
 	gem 'pg'
