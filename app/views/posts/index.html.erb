@@ -74,8 +74,8 @@
             </div>
             <div>
                 <p>
-                  <b>From: </b><%= post.FromDate.strftime("%d %b %Y") %><br>
-                  <b>To: </b><%= post.ToDate.strftime("%d %b %Y") %>
+                  <b>From: </b><%= post.FromDate %><br>
+                  <b>To: </b><%= post.ToDate %>
                 </p>
                 <p>
                   <% post.tags.any? %>

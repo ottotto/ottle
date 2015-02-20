@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   	validates_attachment_presence :image
   	#validates :title, :description, presence: true
-  	validates :address, :title, presence: true
+  	validates :address, :title, :FromDate, :ToDate, presence: true
 
   	geocoded_by :address
   	after_validation :geocode

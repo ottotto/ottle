@@ -1,13 +1,9 @@
-<div style="height:50px"></div>
 <script type="text/javascript">
   $(document).ready(function() {
    
     $("#owlshow").owlCarousel({
-      autoPlay : 3000,
-      stopOnHover : false,
       navigation : true,
       lazyLoad : true,
-      slideSpeed : 300,
       items: 6,
       paginationSpeed : 400,
       transitionStyle : "fade",
@@ -19,18 +15,16 @@
    
   });
 </script>
+<body>
 <div class="container">
 		<div class="row">
-		<h3>
+		<h2>
 		  <strong><%= @post.title %></strong>
-		</h3>
+		</h2>
 		<div id="owlshow" class="owl-carousel col-md-12">
 			<% @post_attachments.each do |p| %>
-				<div class="item">
-					<%= link_to image_tag(p.avatar_url), edit_post_attachment_path(p)%>
-				</div>
+				<%= link_to image_tag(p.avatar_url), edit_post_attachment_path(p)%>
 			<% end %>
-
 		</div>
 		<div class="col-md-7">
 		    <% content_for :javascripts do %>
@@ -71,6 +65,23 @@
 			<div class="container-fluid"><br><br>
 				<%=simple_format h @post.description %>
 			</div>
+
+			<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+			<div id="blueimp-gallery" class="blueimp-gallery">
+				<div class="slides"></div>
+				<h3 class="title"></h3>
+				<a class="prev">‹</a>
+				<a class="next">›</a>
+				<a class="close">×</a>
+				<a class="play-pause"></a>
+				<ol class="indicator"></ol>
+			</div>
+			<h4><b>Image Gallery</b></h4>
+			<div id="links">
+				<% @post_attachments.each do |p| %>
+					<%= link_to(image_tag(p.avatar_url, :style => "width: 75px"), p.avatar_url, :data => {:gallery => ''}) %>
+				<% end %>
+			</div>
 			<div class="col-md-12 col-sm-12">&nbsp
 				<div class ="col-md-12 col-sm-12">Tags: 
 				    <% @post.tags.any? %>
@@ -79,6 +90,7 @@
 				        <% end %>
 				</div>
 			</div>
+
 			&nbsp
 			 <div id="disqus_thread"></div>
 			    <script type="text/javascript">
@@ -96,6 +108,7 @@
     
 		&nbsp&nbsp
 		</div>
+
 		<div class="col-md-12 col-sm-12">
 		<br>
 			<%= link_to '', posts_path, class: "glyphicon glyphicon-arrow-left" %> |
@@ -107,3 +120,8 @@
 	</div>
 </div>
 
+
+
+
+
+</body>
