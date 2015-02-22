@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# bundle exec rake doc:rails generates the API under doc/api.
+
 gem 'rails', '4.1.8'
-gem 'cloudinary'
 gem "twitter-bootstrap-rails"
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -16,27 +17,33 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.3'
+#image related
+gem 'cloudinary'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'owlcarousel-rails'
 gem 'carrierwave'
-# bundle exec rake doc:rails generates the API under doc/api.
 gem "paperclip", "~> 4.2"
 gem "paperclip-dropbox", ">= 1.1.7"
 gem 'acts-as-taggable-on'
+#user
 gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala"
+#maps
 gem 'jqvmap-rails'
 gem 'jvectormap-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+#Finance related
+gem "highstock-rails"    
 gem "chartkick"
 gem 'groupdate'
 gem 'stripe', :source => 'https://code.stripe.com/'
 
+#backend
 gem "passenger"
 gem 'newrelic_rpm'
 

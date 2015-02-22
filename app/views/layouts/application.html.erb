@@ -8,11 +8,13 @@
 	  <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" %>
 	<!--Image Gallery-->
 	  <%= stylesheet_link_tag "//blueimp.github.io/Gallery/css/blueimp-gallery.min.css" %>
-	  <%= stylesheet_link_tag "css/bootstrap-image-gallery.min.css" %>
+	  <!--<%= stylesheet_link_tag "css/bootstrap-image-gallery.min.css" %>-->
 <!--JS-->
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<!--Charts-->
 	  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+      <%= javascript_include_tag "http://code.highcharts.com/stock/highstock.js" %>
+      <%= javascript_include_tag "http://code.highcharts.com/stock/modules/exporting.js" %>
 	<!--Stripe-->
 	  <%= javascript_include_tag "https://js.stripe.com/v2/" %>
 	<!--Google Map-->
@@ -20,17 +22,15 @@
 	  <%= javascript_include_tag '//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js'  %>
 	<!--Image Gallery-->
 	  <%= javascript_include_tag "//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js" %>
-	  <%= javascript_include_tag "js/bootstrap-image-gallery.min.js" %>
+	  <!--<%= javascript_include_tag "js/bootstrap-image-gallery.min.js" %>-->
 
 	  <%= javascript_include_tag "vendor/modernizr" %>
 	  <%= csrf_meta_tags %>
 	  <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
-	
+	  <%= yield(:head) %>
 	</head>
 	<body>
-	<%= render 'layouts/header' %>
-
-
+			<%= render 'layouts/header' %>
 			<!-- 
 			<p class="notice"><%= notice %></p>
 			<p class="alert"><%= alert %></p> 

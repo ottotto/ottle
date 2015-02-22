@@ -6,5 +6,6 @@
 	<%= render 'form' %>
 
 	<%= link_to 'Show', @post_attachment %> |
-	<%= link_to 'Back', post_attachments_path %>
+	<%= link_to 'Back', post_attachments_path %> |
+	<%= link_to 'Destroy', post_attachment_path, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

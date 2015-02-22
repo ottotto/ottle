@@ -3,6 +3,25 @@
 @import "bootstrap/glyphicons";
 @import "font-awesome";
 
+#inputSymbol input:focus, #inputSymbol select:focus {
+	outline: none;
+	border-color: #fab11c;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #fab11c;
+	border-radius: 15px;
+}
+
+#inputSymbol input, #inputSymbol select {
+	border:1px solid #999; 
+	border-left:1.0em solid #aaa;
+	border-radius: 15px;
+	-moz-border-radius: 15px; 
+}
+
+.required{ 
+	border-left:1.05em solid #000000;
+} 
+
+
 #owlshow .owl-item img{
   display: block;
   width: 100%;
@@ -28,7 +47,7 @@
 
 .footer {
 	background-color: #444444;
-	height: 100px;
+	height: 150px;
 	opacity: 0.85; 
 	filter: alpha(opacity=50);
 }
@@ -37,9 +56,23 @@
 }
 
 .postThumb {
-	width: 250px;
+	height: 180px;
 }
 
+@media only screen and (max-width: 780px) {
+	.jumbotext {
+		font-size: 10px;
+	}
+	.mmap {
+		height: 250px;
+	}
+}
+
+@media only screen and (min-width: 780px) {
+	.mmap {
+		height: 400px;
+	}
+}
 .navbar-wrapper .navbar-default {
 	background-color: #ffffff;
 	opacity: 0.85; 
@@ -52,11 +85,13 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar {
+.navbar-inverse .navbar-nav > ul , .navbar-default .navbar-nav > ul {
 	padding: 0;
 	margin: 0;
 }
-
+.brandcolor {
+	color:#D5641C;
+}
 .brand {
 	color: #D5641C;
 	font-weight: 500;
@@ -80,8 +115,8 @@ body {
 
 .navbar-inverse .navbar-nav > li > a {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	font-weight: bold;
+	font-size: 13px;
+	font-weight: 600;
 	color: #FFFFFF;
 }
 
