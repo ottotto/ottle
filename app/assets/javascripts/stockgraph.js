@@ -12,6 +12,10 @@ $('document').ready(function() {
         var startDate=$("#startDate").val();
         var endDate=$("#endDate").val();
         var durSel=$("#durSel").val();
+        var stperiod=$("#stperiod").val() || 50;
+        var ltperiod=$("#ltperiod").val() || 200;
+        var durSelma=$("#durSelma").val();
+
         function parseDate(input) {
           var parts = input.split('/');
           // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
@@ -29,24 +33,91 @@ $('document').ready(function() {
             dur = "m";
             tinterval = 30*24*3600*1000;
         };
+        if (durSelma == "sma"){
+            durma = "SMA";
+        } else {
+            durma = "EMA";
+        };
+
         var realtimeQ = yqlURL+"select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + symbol + "%22)%0A%09%09&"+ dataFormat;
         var historicalQ= yqlURL+"select%20*%20from%20csv%20where%20url%3D'http%3A%2F%2Freal-chart.finance.yahoo.com%2Ftable.csv%3Fs%3D"+ symbol +"%26a%3D"+ parseDate(startDate)[0] +"%26b%3D"+ parseDate(startDate)[1]+ "%26c%3D" + parseDate(startDate)[2]+ "%26d%3D"+parseDate(endDate)[0]+"%26e%3D"+parseDate(endDate)[1]+"%26f%3D"+parseDate(endDate)[2] +"%26g%3D"+dur+"%26ignore%3D.csv'"+ dataFormat;
         $(function() {
             $.getJSON(realtimeQ, function(json) {//YQL Request
                 $('#symbol').text(json.query.results.quote.Name);//Assign quote.Param to span tag
                 $('#bidRealtime').text(json.query.results.quote.BidRealtime);
+
             });
         });
+
+        var chartl; // global
+
+        function requestData() {
+            $.ajax({
+                url: realtimeQ,
+                dataType: 'jsonp',
+                success: function(point) {
+                    var series = chartl.series[0];
+                    var shift = series.data.length > 100; // shift if the series is 
+                                                         // longer than 20
+                    var livepoint = [Date.now(), parseFloat(point.query.results.quote.BidRealtime)];
+                    console.log(livepoint);
+                    // add the point
+                    chartl.series[0].addPoint(livepoint, true, shift);
+                    
+                    // call it again after one second
+                    setTimeout(requestData, 1000);    
+                },
+                cache: false
+            });
+        };
+        console.log(chartl);
+        chartl = new Highcharts.Chart({
+            chart: {
+                renderTo: 'containerlive',
+                events: {
+                    load: requestData
+                }
+            },
+            rangeSelector: {
+                buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputEnabled: false,
+                selected: 0
+            },
+            title: {
+                text: 'Live '+symbol+' data'
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: symbol+' data',
+                data: []
+            }]
+        }); 
+
+
+
         function converTime(time) {
             return new Date(time).getTime();
         };
-
 
         $(function () {
             $.getJSON(historicalQ, function (data) {
                 var datarray = data["query"]["results"]["row"];
                 var dataLength = datarray.length
                 var ohlc = [];
+                var closeprice = [];
                 var volume = [];
                 //var xaxis =[];
                 // set the allowed units for data grouping
@@ -70,14 +141,17 @@ $('document').ready(function() {
                         converTime(datarray[i]["col0"]),
                         parseFloat(datarray[i]["col5"])
                     ]);
-
+                    closeprice.unshift([
+                        converTime(datarray[i]["col0"]),
+                        parseFloat(datarray[i]["col4"])
+                    ]);
                 };
                 //alert(xaxis);
                 //alert(ohlc);
                 //alert(volume);
                 //console.log(xaxis);
-                console.log(ohlc);
-                console.log(volume);
+                //console.log(ohlc);
+                //console.log(volume);
                 chart = new Highcharts.StockChart({
                     chart: {
                         renderTo: 'containera'
@@ -85,11 +159,9 @@ $('document').ready(function() {
                     rangeSelector: {
                         selected: 1
                     },
-
                     title: {
                         text: 'Historical Price of ' + symbol
                     },
-
                     yAxis: [{
                         labels: {
                             align: 'right',
@@ -113,7 +185,6 @@ $('document').ready(function() {
                         offset: 0,
                         lineWidth: 2
                     }],
-
                     series: [{
                         type: 'ohlc',
                         name: symbol,
@@ -131,10 +202,83 @@ $('document').ready(function() {
                         }
                     }]
                 });
-            
+                chart1 = new Highcharts.StockChart({
+                    chart: {
+                        renderTo: 'containerb'
+                    },
+                    title : {
+                        text : durma+' of '+symbol+' stock price'
+                    },
+                    subtitle: {
+                        text: 'From '+startDate+' to '+endDate
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title : {
+                            text : 'Price'
+                        }
+                    },
+                    tooltip: {
+                        crosshairs: true,
+                        shared: true
+                    },
+                    rangeSelector : {
+                        selected : 1
+                    },
+                    legend: {
+                        enabled: true,
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    plotOptions: {
+                        series: {
+                            marker: {
+                                enabled: false,
+                            }
+                        }
+                    },
+                    series : [{
+                        name: symbol+' Stock Price',
+                        type : 'line',
+                        id: 'primary',
+                        data : closeprice
+                    }, {
+                        name: stperiod+' -day '+durma,
+                        linkedTo: 'primary',
+                        showInLegend: true,
+                        type: 'trendline',
+                        algorithm: durma,
+                        periods: stperiod
+                    }, {
+                        name: ltperiod+' -day '+durma,
+                        linkedTo: 'primary',
+                        showInLegend: true,
+                        type: 'trendline',
+                        algorithm: durma,
+                        periods: ltperiod
+                    }]
+                });
+
             });
         });
+
     });
+
+
+
+
+
+
+
+
+
+
+
+
 
         $(function () {
             $('#container2').highcharts({
